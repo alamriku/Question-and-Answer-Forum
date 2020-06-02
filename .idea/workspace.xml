@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ab25072-4d24-42e3-8337-3b809ce5a77e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/_messages.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/questions/_form.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/questions/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/questions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/create.blade.php" afterDir="false" />
