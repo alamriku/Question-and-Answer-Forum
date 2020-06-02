@@ -14,8 +14,12 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
+       // \DB::enableQueryLog();
+        // user is the method name in question model with('user') represent the eager loading
+        $questions = Question::with('user')->latest()->paginate(5);
+         //view('questions.index',compact('questions'))->render();
         return view('questions.index',compact('questions'));
+        //dd(\DB::getQueryLog());
     }
 
     /**
