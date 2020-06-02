@@ -5,6 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    @include('layouts._messages')
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                            <h2>All Questions</h2>
