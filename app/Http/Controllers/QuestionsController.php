@@ -53,9 +53,13 @@ class QuestionsController extends Controller
      * @param  \App\Questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $questions)
+    public function show(Question $question)
     {
-        //
+//        $question->views= $question->views+1;
+//        $question->save();
+        //the alter native is given below
+        $question->increment('views');
+        return view('questions.show',compact('question'));
     }
 
     /**
