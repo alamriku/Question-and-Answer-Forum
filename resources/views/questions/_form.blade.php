@@ -16,6 +16,7 @@
         </div>
     @endif
 </div>
+
 <div class="form-group">
     <button type="submit" class="btn btn-outline-primary btn-lg">{{$buttonText}}</button>
 </div>

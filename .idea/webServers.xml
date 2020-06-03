@@ -18,6 +18,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="054b7aa6-6672-43f1-8292-f62c3bdf9f08" name="abc" url="http://bartabd.news">
+        <fileTransfer host="bartabd.news" port="21" rootFolder="/public_html/ab24.news">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
