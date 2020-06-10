@@ -13,11 +13,10 @@ class Answer extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public  function getBodyAttribute()
-    {
-        return new HtmlString(
-            app(Parsedown::class)->setSafeMode(true)->text($this->body)
-        );
+    public function getCreatedDateAttribute(){
+        //diffForHumans is a carbon date method
+        return $this->created_at->diffForHumans();
+        // return $this->created_at->formate('d/m/Y');
     }
 
     public static function boot(){

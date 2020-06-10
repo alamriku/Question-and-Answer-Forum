@@ -4,8 +4,10 @@
     <list default="true" id="6ab25072-4d24-42e3-8337-3b809ce5a77e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Answer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/QuestionFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/QuestionFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuestionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuestionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/questions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/questions/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +205,7 @@
       <workItem from="1591294929550" duration="3818000" />
       <workItem from="1591382326210" duration="3959000" />
       <workItem from="1591419051772" duration="623000" />
-      <workItem from="1591805423810" duration="1808000" />
+      <workItem from="1591805423810" duration="5429000" />
     </task>
     <servers />
   </component>
