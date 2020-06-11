@@ -37,9 +37,11 @@ class AnswerController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Answer $answer)
+    public function edit(Question $question,Answer $answer)
     {
-        //
+        $this->authorize('update',$answer);
+
+        return view('answers.edit',compact('question','answer'));
     }
 
     /**
@@ -49,10 +51,17 @@ class AnswerController extends Controller
      * @param  \App\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Answer $answer)
+    public function update(Request $request,Question $question, Answer $answer)
     {
-        //
+        $this->authorize('update',$answer);
+
+        $answer->update($request->validate(
+            ['body'=>'required']
+        ));
+
+        return redirect()->route('questions.show',$question->slug)->with('success','your answer is updated');
     }
+
 
     /**
      * Remove the specified resource from storage.
