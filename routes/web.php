@@ -30,5 +30,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+
+
+//answer Route start
+//Route::post('questions/{question}/answers','AnswerConrtoller@store')->name('answers.store');
+//this below is nested resoure route
+Route::resource('questions.answers','AnswerController')->except(['index','create','show']);
+//answer route end
+
+//Question route
 Route::resource('questions','QuestionsController')->except('show');
 Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show');
+//Question route end
