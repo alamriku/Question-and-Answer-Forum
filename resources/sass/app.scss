@@ -7,7 +7,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
+$fa-font-path: "../fontawesome/webfonts";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
 .counters{
     margin-right: 30px;
     font-size:10px;
@@ -47,6 +49,46 @@
 
 form.form-delete{
     display: inline;
+}
+
+.vote-controls{
+    min-width: 60px;
+    margin-right: 30px;
+    text-align: center;
+    color:$gray-700;
+
+    span,a{
+        display: block;
+
+    }
+    span{
+        //&.votes-count is meaning .vote-controls span.votes-count
+        &.votes-count{
+            font-size:25px;
+        }
+        &.favorite-count{
+            font-size:12px;
+        }
+    }
+
+    a{
+        cursor: pointer;
+        color:$gray-600;
+
+        &.off,&.off:hover{
+            color:$gray-500;
+        }
+
+        &.favorite, &.favorited:hover{
+            color:$warning;
+        }
+
+
+        &.vote-accepted{
+            color:$green;
+        }
+    }
+
 }
 
 
