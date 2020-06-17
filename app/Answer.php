@@ -34,12 +34,9 @@ class Answer extends Model
         });
 
         static::deleted(function ($answer){
-                $question = $answer->question;
+
             $answer->question()->decrement('answers_count');
-            if($question->best_ans_id == $answer->id){
-                $question->best_ans_id = NULL;
-                $question->save();
-            }
+
         });
 //        static::saved(function ($answer){
 //            echo "Answer Saved";
