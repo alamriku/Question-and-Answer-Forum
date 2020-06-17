@@ -20,6 +20,7 @@ class Answer extends Model
         // return $this->created_at->formate('d/m/Y');
     }
 
+    //this below boot is active when a model life cycle is started
     public static function boot(){
         parent::boot();
 
@@ -28,6 +29,9 @@ class Answer extends Model
             $answer->question()->increment('answers_count');
         });
 
+        static::deleted(function ($answer){
+            $answer->question()->decrement('answers_count');
+        });
 //        static::saved(function ($answer){
 //            echo "Answer Saved";
 //        });

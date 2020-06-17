@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ab25072-4d24-42e3-8337-3b809ce5a77e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/answers/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Question-ans.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Question-ans.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Answer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/answers/_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/answers/_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,12 +156,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/fontawesome" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Keeno_project/public/logo" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\xampp\htdocs\Keeno_project\public\logo" />
+      <recent name="I:\xampp\htdocs\Keeno_project\public\js" />
+      <recent name="I:\xampp\htdocs\Keeno_project" />
       <recent name="I:\xampp\htdocs\Question-ans\resources\fontawesome" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\xampp\htdocs\Keeno_project\resources\views" />
+      <recent name="I:\xampp\htdocs\Keeno_project\resources\views\layouts\frontEnd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -213,7 +221,15 @@
       <workItem from="1591419051772" duration="623000" />
       <workItem from="1591805423810" duration="5429000" />
       <workItem from="1591850231402" duration="986000" />
-      <workItem from="1591895941770" duration="10976000" />
+      <workItem from="1591895941770" duration="11218000" />
+      <workItem from="1591944279058" duration="656000" />
+      <workItem from="1591982925618" duration="11080000" />
+      <workItem from="1592021371404" duration="37147000" />
+      <workItem from="1592112934624" duration="1834000" />
+      <workItem from="1592127800796" duration="7715000" />
+      <workItem from="1592195642002" duration="18000" />
+      <workItem from="1592285371093" duration="613000" />
+      <workItem from="1592407775106" duration="1403000" />
     </task>
     <servers />
   </component>
