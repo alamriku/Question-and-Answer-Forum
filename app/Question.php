@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+use Auth;
 class Question extends Model
 {
     protected  $fillable = ['title','body'];
@@ -47,5 +47,20 @@ class Question extends Model
     public function acceptBestAnswer(Answer $answer){
         $this->best_ans_id = $answer->id;
         $this->save();
+    }
+
+    public function favorites(){
+        return $this->belongsToMany(User::class,'favorites')->withTimestamps();//'question_id','use_id');
+    }
+
+    public function isFavorited(){
+
+        return $this->favorites()->where('user_id',Auth::user()->id)->count() >0;
+    }
+    public function getIsFavoritedAttribute(){
+        return $this->isFavorited();
+    }
+    public function getFavoritesCountAttribute(){
+        return $this->favorites->count();
     }
 }
