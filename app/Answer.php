@@ -20,6 +20,10 @@ class Answer extends Model
         // return $this->created_at->formate('d/m/Y');
     }
 
+    public function getStatusAttribute(){
+        return $this->id == $this->question->best_ans_id ? 'vote-accepted': '';
+    }
+
     //this below boot is active when a model life cycle is started
     public static function boot(){
         parent::boot();
@@ -30,7 +34,12 @@ class Answer extends Model
         });
 
         static::deleted(function ($answer){
+                $question = $answer->question;
             $answer->question()->decrement('answers_count');
+            if($question->best_ans_id == $answer->id){
+                $question->best_ans_id = NULL;
+                $question->save();
+            }
         });
 //        static::saved(function ($answer){
 //            echo "Answer Saved";
