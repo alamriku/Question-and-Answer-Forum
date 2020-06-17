@@ -18,7 +18,7 @@
                                 <i class="fas fa-caret-down fa-3x"></i>
 
                             </a>
-                            <a href="" title="Mark this answer as best answer" class="vote-accepted mt-2 ">
+                            <a href="" title="Mark this answer as best answer" class="{{$answer->status}} mt-2 ">
                                 <i class="fas fa-check fa-2x"></i>
                             </a>
 
