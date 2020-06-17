@@ -43,3 +43,7 @@ Route::resource('questions.answers','AnswerController')->except(['index','create
 Route::resource('questions','QuestionsController')->except('show');
 Route::get('/questions/{slug}','QuestionsController@show')->name('questions.show');
 //Question route end
+
+//Answer accepted
+Route::post('/answers/{answer}/accept','AcceptAnswerController')->name('answers.accept');
+//end answer accepted
