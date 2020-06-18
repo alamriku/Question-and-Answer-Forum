@@ -20,8 +20,8 @@
                         @foreach($questions as $question)
                             <div class="media">
                                 <div class="d-flex flex-column counters">
-                                    <div class="vote">
-                                        <strong>{{$question->votes}}</strong> {{\Illuminate\Support\Str::plural('vote',$question->votes)}}
+                                    <div class="vote ">
+                                        <strong>{{$question->votes_count}}</strong> {{\Illuminate\Support\Str::plural('votes_count',$question->votes_count)}}
                                     </div>
                                     <div class="status {{$question->status}}">
                                         <strong>{{$question->answers_count}}</strong> {{\Illuminate\Support\Str::plural('answer',$question->answers_count)}}

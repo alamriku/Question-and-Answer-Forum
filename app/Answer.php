@@ -49,4 +49,8 @@ class Answer extends Model
 //            echo "Answer Saved";
 //        });
     }
+
+    public function votes(){
+        return $this->morphToMany(User::class,'votable');
+    }
 }
