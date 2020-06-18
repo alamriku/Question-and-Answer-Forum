@@ -28,7 +28,7 @@
                                     <i class="fas fa-caret-down fa-3x"></i>
 
                                 </a>
-                                <a href="" title="Click to mark as favourite question(click again to undo)" class=" mt-2 {{ empty(Auth::user()->id) ? 'off' :($question->is_favorited) ? 'favorite': ''}}"
+                                <a href="" title="Click to mark as favourite question(click again to undo)" class=" mt-2 {{ Auth::check() ? 'off' :($question->is_favorited) ? 'favorite': ''}}"
                                    onclick="event.preventDefault();document.getElementById('favorite-question-{{$question->id}}').submit()"
                                 >
                                     <i class="fas fa-star fa-2x"></i>
