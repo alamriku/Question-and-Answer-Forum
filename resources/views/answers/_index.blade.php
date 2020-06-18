@@ -10,12 +10,29 @@
                 @foreach($answers as $answer)
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a href="" title="This answer  is useful" class="vote-up">
+                            <a href="" title="This Answer is useful"
+                               class="vote-up {{Auth::guest() ? 'off':''}}"
+                               onclick="event.preventDefault();document.getElementById('up-vote-answer-{{$answer->id}}').submit()"
+                            >
+                                <form action="/answers/{{$answer->id}}/vote" id="up-vote-answer-{{$answer->id}}" method="post" style="display: none">
+
+                                    <input type="hidden" name="vote" value="1">
+                                    @csrf
+
+                                </form>
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
+                            <span class="votes-count">{{$answer->votes_count}}</span>
+                            <a href="" title="This question is not useful"
+                               class="vote-down {{Auth::guest() ? 'off':''}}"
+                               onclick="event.preventDefault();document.getElementById('down-vote-answer-{{$answer->id}}').submit()"
+                            >
+                                <form action="/answers/{{$answer->id}}/vote" id="down-vote-answer-{{$answer->id}}" method="post" style="display: none">
 
-                            <span class="votes-count">1230</span>
-                            <a href="" title="This answer  is not useful" class="vote-down off">
+                                    <input type="hidden" name="vote" value="-1">
+                                    @csrf
+
+                                </form>
                                 <i class="fas fa-caret-down fa-3x"></i>
 
                             </a>
