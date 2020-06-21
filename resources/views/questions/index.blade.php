@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    @include('layouts._messages')
+
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                            <h2>All Questions</h2>
@@ -17,7 +17,9 @@
                     </div>
 
                     <div class="card-body">
-                        @foreach($questions as $question)
+                        @include('layouts._messages')
+
+                        @forelse($questions as $question)
                             <div class="media">
                                 <div class="d-flex flex-column counters">
                                     <div class="vote ">
@@ -58,7 +60,11 @@
                                 </div>
                             </div>
                             <hr>
-                            @endforeach
+                            @empty
+                                <div class="alert alert-warning">
+                                    <strong>Sorry</strong> There are no questions available.
+                                </div>
+                            @endforelse
                         {{
                             $questions->links()
                         }}

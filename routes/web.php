@@ -20,9 +20,7 @@ Route::get('/clear', function() {
     \Illuminate\Support\Facades\Artisan::call('route:clear');
     return 'Cleared!';
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "QuestionsController@index");
 
 Auth::routes();
 
