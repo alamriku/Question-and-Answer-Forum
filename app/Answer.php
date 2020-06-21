@@ -22,6 +22,11 @@ class Answer extends Model
         // return $this->created_at->formate('d/m/Y');
     }
 
+    public function getBodyHtmlAttribute()
+    {
+        return clean(\Parsedown::instance()->text($this->body));
+    }
+
     public function getStatusAttribute(){
         return $this->isBest() ? 'vote-accepted': '';
     }

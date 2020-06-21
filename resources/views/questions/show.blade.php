@@ -21,7 +21,7 @@
                         <div class="media">
                                 @include('shared._vote',['model'=>$question])
                             <div class="media-body">
-                                {!! parsedown($question->body)  !!}
+                                {!! $question->body_html !!}
                                <div class="row">
                                     <div class="col-4">
 

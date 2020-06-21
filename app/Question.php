@@ -35,7 +35,7 @@ class Question extends Model
 
     public function getStatusAttribute(){
             if($this->answers_count > 0){
-                if($this->best_answer_id){
+                if($this->best_ans_id){
                     return 'answered-accepted';
                 }
                 return 'answered';
@@ -69,6 +69,23 @@ class Question extends Model
     public function getFavoritesCountAttribute(){
         return $this->favorites->count();
     }
+    public function getBodyHtmlAttribute()
+    {
+        return (clean($this->bodyHtml()));
+    }
+    private function bodyHtml(){
+        return \Parsedown::instance()->text($this->body);
+    }
 
+    public function getExcerptAttribute(){
+        return $this->excerpt(2);
 
+    }
+
+    public function excerpt($length){
+        return  \Illuminate\Support\Str::limit(strip_tags($this->bodyHtml()),$length);
+    }
+//    public function setBodyAttribute($value){
+//        $this->attributes['body']=clean($value);
+//    }
 }

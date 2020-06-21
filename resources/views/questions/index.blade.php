@@ -21,7 +21,7 @@
                             <div class="media">
                                 <div class="d-flex flex-column counters">
                                     <div class="vote ">
-                                        <strong>{{$question->votes_count}}</strong> {{\Illuminate\Support\Str::plural('votes_count',$question->votes_count)}}
+                                        <strong>{{$question->votes_count}}</strong> {{\Illuminate\Support\Str::plural('Vote',$question->votes_count)}}
                                     </div>
                                     <div class="status {{$question->status}}">
                                         <strong>{{$question->answers_count}}</strong> {{\Illuminate\Support\Str::plural('answer',$question->answers_count)}}
@@ -51,7 +51,10 @@
                                           Asked By <a href="{{$question->user->url }}">{{$question->user->name}}</a>
                                           <small class="text-muted">{{$question->created_date}}</small>
                                       </p>
-                                        {{ \Illuminate\Support\Str::limit($question->body,250) }}
+                                    <div class="excerpt">
+                                        {{ $question->excerpt(350) }}
+                                    </div>
+
                                 </div>
                             </div>
                             <hr>

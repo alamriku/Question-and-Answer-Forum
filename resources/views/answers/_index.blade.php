@@ -11,7 +11,7 @@
                     <div class="media">
                         @include('shared._vote',['model'=>$answer])
                         <div class="media-body">
-                            {!! parsedown($answer->body) !!}
+                            {!! $answer->body_html !!}
                             <div class="row">
                                 <div class="col-4">
                                     <div class="ml-auto">
