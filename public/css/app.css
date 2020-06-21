@@ -16947,7 +16947,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/fa-solid-900.eot?a0369ea57eb6d3843d6474c035111f29);
-  src: url(/fonts/fa-solid-900.eot?a0369ea57eb6d3843d6474c035111f29?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0) format("woff2"), url(/fonts/fa-solid-900.woff?bea989e82b07e9687c26fc58a4805021) format("woff"), url(/fonts/fa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0) format("truetype"), url(/fonts/fa-solid-900.svg?ec763292e583294612f124c0b0def500#fontawesome) format("svg");
+  src: url(/fonts/fa-solid-900.eot?a0369ea57eb6d3843d6474c035111f29?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?b15db15f746f29ffa02638cb455b8ec0) format("woff2"), url(/fonts/fa-solid-900.woff?bea989e82b07e9687c26fc58a4805021) format("woff"), url(/fonts/fa-solid-900.ttf?1ab236ed440ee51810c56bd16628aef0) format("truetype"), url(/fonts/fa-solid-900.svg?ad912fd102f4052d3273dd838e0c671d#fontawesome) format("svg");
 }
 
 .fa,
@@ -17032,5 +17032,13 @@ form.form-delete {
 
 .vote-controls a.vote-accepted {
   color: #38c172;
+}
+
+.post {
+  padding: 20px 0;
+}
+
+.post:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
