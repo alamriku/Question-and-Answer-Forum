@@ -38,7 +38,7 @@
                     });
             },
             destroy(){
-                this.$toast.question('Are you sure about that?','Confirm',{
+                this.$toast.question('Are you sure about that?',{
                     timeout: 20000,
                     close: false,
                     overlay: true,
@@ -56,7 +56,7 @@
                                     $(this.$el).fadeOut(500,()=>{
                                         this.$toast.success(res.data.message,'Success',{ timeout:3000 });
                                     })
-                                })
+                                });
                             instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 
                         }, true],

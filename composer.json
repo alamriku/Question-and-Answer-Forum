@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "mews/purifier": "^3.2",
-        "parsedown/laravel": "^1.2"
+        "parsedown/laravel": "^1.2",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

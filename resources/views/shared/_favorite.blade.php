@@ -3,13 +3,14 @@
 >
     <i class="fas fa-star fa-2x"></i>
 
-    <form action="/questions/{{$model->id}}/favorites" id="favorite-question-{{$model->id}}" method="post" style="display: none">
-
-        @if($model->is_favorited)
-            @method('DELETE')
-        @endif
-        @csrf
-
-    </form>
+  
     <span class="favorites-count">{{$model->favorites_count}}</span>
 </a>
+<form action="/questions/{{$model->id}}/favorites" id="favorite-question-{{$model->id}}" method="post" style="display: none">
+    
+    @if($model->is_favorited)
+        @method('DELETE')
+    @endif
+    @csrf
+
+</form>
