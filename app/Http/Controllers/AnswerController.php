@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 class AnswerController extends Controller
 {
 
-
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -79,6 +82,11 @@ class AnswerController extends Controller
     {
         $this->authorize('delete',$answer);
         $answer->delete();
+        if(\request()->expectsJson()){
+            return  response()->json([
+                'message'=>'Your answer has been removed'
+            ]);
+        }
         return back()->with('success','Your answer has been removed');
     }
 }
