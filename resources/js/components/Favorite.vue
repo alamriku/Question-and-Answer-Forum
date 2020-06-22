@@ -21,22 +21,21 @@
         },
         computed:{
             classes(){
+
                 return[
                     'mt-2',
-                    !this.signedIn ? 'off' : (this.isFavorited ? 'favorite' :'')
+                    !this.$signedId ? 'off' : (this.isFavorited ? 'favorite' :'')
                 ]
             },
             endpoint(){
                 return `/questions/${this.id}/favorites`
             },
-            signedIn(){
-                console.log( window );
-                return window.Auth.signedIn;
-            },
+
         },
         methods:{
             toggle(){
-                if(!this.signedIn){
+
+                if(!(this.$signedId)){
                  this.$toast.warning("Please login to favorite this question","Warning",{
                     timeout:3000,
                      position:'bottomLeft'

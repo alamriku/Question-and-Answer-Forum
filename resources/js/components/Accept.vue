@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <a v-if="canAccept" title="Mark this answer as best answer"
+        <a v-if="authorize('accept',answer)" title="Mark this answer as best answer"
            :class="classes"
            @click.prevent="create"
         >
@@ -47,8 +47,7 @@
         },
         computed:{
             canAccept(){
-                console.log('canAccept');
-                return true;
+                return this.authorize('accept',this.answer)
 
             },
             accepted(){

@@ -1958,8 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     canAccept: function canAccept() {
-      console.log('canAccept');
-      return true;
+      return this.authorize('accept', this.answer);
     },
     accepted: function accepted() {
       console.log('accepted');
@@ -2098,19 +2097,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     classes: function classes() {
-      return ['mt-2', !this.signedIn ? 'off' : this.isFavorited ? 'favorite' : ''];
+      return ['mt-2', !this.$signedId ? 'off' : this.isFavorited ? 'favorite' : ''];
     },
     endpoint: function endpoint() {
       return "/questions/".concat(this.id, "/favorites");
-    },
-    signedIn: function signedIn() {
-      console.log(window);
-      return window.Auth.signedIn;
     }
   },
   methods: {
     toggle: function toggle() {
-      if (!this.signedIn) {
+      if (!this.$signedId) {
         this.$toast.warning("Please login to favorite this question", "Warning", {
           timeout: 3000,
           position: 'bottomLeft'
@@ -38382,7 +38377,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.canAccept
+    _vm.authorize("accept", _vm.answer)
       ? _c(
           "a",
           {
@@ -50679,8 +50674,9 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-izitoast */ "./node_modules/vue-izitoast/dist/vue-izitoast.js");
 /* harmony import */ var vue_izitoast__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_izitoast__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! izitoast/dist/css/iziToast.css */ "./node_modules/izitoast/dist/css/iziToast.css");
-/* harmony import */ var izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_authorization_authorize_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/authorization/authorize.js */ "./resources/js/components/authorization/authorize.js");
+/* harmony import */ var izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! izitoast/dist/css/iziToast.css */ "./node_modules/izitoast/dist/css/iziToast.css");
+/* harmony import */ var izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(izitoast_dist_css_iziToast_css__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50693,7 +50689,9 @@ __webpack_require__(/*! ./fontawesome */ "./resources/js/fontawesome.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 
+
 Vue.use(vue_izitoast__WEBPACK_IMPORTED_MODULE_0___default.a);
+Vue.use(_components_authorization_authorize_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -51019,6 +51017,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserInfo_vue_vue_type_template_id_11f66ff8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/authorization/authorize.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/authorization/authorize.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _policies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./policies */ "./resources/js/components/authorization/policies.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  install: function install(Vue, options) {
+    Vue.prototype.authorize = function (policy, model) {
+      if (!window.Auth.signedIn) return false;
+
+      if (typeof policy == 'String' && _typeof(model) == 'object') {
+        var user = window.Auth.user;
+        return _policies__WEBPACK_IMPORTED_MODULE_0__["default"][policy](user, model);
+      }
+    };
+
+    Vue.prototype.$signedId = window.Auth.signedIn;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/authorization/policies.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/authorization/policies.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  modify: function modify(user, model) {
+    return user.id == model.user_id;
+  },
+  accept: function accept(user, answer) {
+    return user.id = answer.question.user_id;
+  }
+});
 
 /***/ }),
 
