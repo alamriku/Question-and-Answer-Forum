@@ -1,3 +1,5 @@
+//this is a vue js plugin using the  instance methods by attaching it to Vue.prototype.
+
 import policies from './policies';
 export default {
     install(Vue,options){

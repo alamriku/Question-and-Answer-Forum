@@ -51,7 +51,7 @@
 
             },
             accepted(){
-                console.log('accepted');
+                console.log(!this.canAccept && this.isBest);
                 return !this.canAccept && this.isBest;
 
             },
