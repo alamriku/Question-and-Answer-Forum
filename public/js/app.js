@@ -1958,10 +1958,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     canAccept: function canAccept() {
-      return this.authorize('accept', this.answer);
+      console.log(this.$authorize('accept', this.answer));
+      return this.$authorize('accept', this.answer);
     },
     accepted: function accepted() {
-      console.log(!this.canAccept && this.isBest);
       return !this.canAccept && this.isBest;
     },
     classes: function classes() {
@@ -2037,6 +2037,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    test: function test() {
+      console.log(this.$authorize('modify', this.answer));
+    },
     edit: function edit() {
       this.beforeEditCache = this.body;
       this.editing = true;
@@ -2070,7 +2073,7 @@ __webpack_require__.r(__webpack_exports__);
     destroy: function destroy() {
       var _this2 = this;
 
-      this.$toast.question('Are you sure about that?', {
+      this.$toast.question('Are you sure about that?', 'Warning', {
         timeout: 20000,
         close: false,
         overlay: true,
@@ -2081,11 +2084,7 @@ __webpack_require__.r(__webpack_exports__);
         position: 'center',
         buttons: [['<button><b>YES</b></button>', function (instance, toast) {
           axios["delete"](_this2.endpoint).then(function (res) {
-            $(_this2.$el).fadeOut(500, function () {
-              _this2.$toast.success(res.data.message, 'Success', {
-                timeout: 3000
-              });
-            });
+            _this2.$emit('deleted');
           });
           instance.hide({
             transitionOut: 'fadeOut'
@@ -2166,6 +2165,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.fetch("/questions/".concat(this.questionId, "/answers"));
   },
   methods: {
+    remove: function remove(index) {
+      this.answers.slice(index, 1);
+      this.count--;
+    },
     fetch: function fetch(endpoint) {
       var _this = this;
 
@@ -38603,7 +38606,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.authorize("accept", _vm.answer)
+    _vm.$authorize("accept", _vm.answer)
       ? _c(
           "a",
           {
@@ -38723,7 +38726,7 @@ var render = function() {
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-4" }, [
                     _c("div", { staticClass: "ml-auto" }, [
-                      _vm.authorize("modify", _vm.answer)
+                      this.$authorize("modify", this.answer)
                         ? _c(
                             "a",
                             {
@@ -38739,7 +38742,7 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.authorize("modify", _vm.answer)
+                      this.$authorize("modify", this.answer)
                         ? _c(
                             "button",
                             {
@@ -38808,10 +38811,15 @@ var render = function() {
                 _vm._v(" "),
                 _c("hr"),
                 _vm._v(" "),
-                _vm._l(_vm.answers, function(answer) {
+                _vm._l(_vm.answers, function(answer, index) {
                   return _c("answer", {
                     key: answer.id,
-                    attrs: { answer: answer }
+                    attrs: { answer: answer },
+                    on: {
+                      deleted: function($event) {
+                        return _vm.remove(index)
+                      }
+                    }
                   })
                 }),
                 _vm._v(" "),
@@ -51695,10 +51703,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   install: function install(Vue, options) {
-    Vue.prototype.authorize = function (policy, model) {
+    Vue.prototype.$authorize = function (policy, model) {
       if (!window.Auth.signedIn) return false;
 
-      if (typeof policy == 'String' && _typeof(model) == 'object') {
+      if (typeof policy == 'string' && _typeof(model) == 'object') {
         var user = window.Auth.user;
         return _policies__WEBPACK_IMPORTED_MODULE_0__["default"][policy](user, model);
       }
@@ -51721,10 +51729,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   modify: function modify(user, model) {
-    return user.id == model.user_id;
+    return user.id === model.user_id;
   },
   accept: function accept(user, answer) {
-    return user.id = answer.question.user_id;
+    return user.id === answer.question.user_id;
   }
 });
 

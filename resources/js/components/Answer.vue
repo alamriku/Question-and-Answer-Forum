@@ -19,10 +19,10 @@
                         <div class="col-4">
                             <div class="ml-auto">
 
-                                <a v-if="authorize('modify',answer)" @click.prevent="edit" class="btn btn-sm btn-outline-info">Edit</a>
+                                <a v-if="this.$authorize('modify',this.answer)" @click.prevent="edit" class="btn btn-sm btn-outline-info">Edit</a>
 
 
-                                <button v-if="authorize('modify',answer)" class="btn btn-sm btn-outline-danger" @click="destroy" >Delete</button>
+                                <button v-if="this.$authorize('modify',this.answer)" class="btn btn-sm btn-outline-danger" @click="destroy" >Delete</button>
 
                             </div>
 
@@ -56,6 +56,9 @@
             }
         },
         methods:{
+            test(){
+                console.log(this.$authorize('modify',this.answer));
+            },
             edit(){
                 this.beforeEditCache=this.body;
                 this.editing=true;
@@ -81,7 +84,7 @@
                     });
             },
             destroy(){
-                this.$toast.question('Are you sure about that?',{
+                this.$toast.question('Are you sure about that?','Warning',{
                     timeout: 20000,
                     close: false,
                     overlay: true,
@@ -96,9 +99,7 @@
 
                             axios.delete(this.endpoint)
                                 .then(res=>{
-                                    $(this.$el).fadeOut(500,()=>{
-                                        this.$toast.success(res.data.message,'Success',{ timeout:3000 });
-                                    })
+                                    this.$emit('deleted')
                                 });
                             instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
 
@@ -116,6 +117,7 @@
             }
         },
         computed:{
+
             isInvalid(){
                 return  this.body.length <10;
             },

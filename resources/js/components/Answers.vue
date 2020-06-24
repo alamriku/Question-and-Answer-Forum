@@ -8,7 +8,7 @@
                     </div>
                     <hr>
 
-                    <answer v-for="answer in answers" :answer="answer" :key="answer.id"></answer>
+                    <answer v-for="(answer,index) in answers" @deleted="remove(index)" :answer="answer" :key="answer.id"></answer>
                     <div class="text-center mt-3" v-if="nextUrl">
                         <button @click.prevent="fetch(nextUrl)" class="btn btn-outline-secondary">Load more answers</button>
                     </div>
@@ -33,6 +33,10 @@
                 this.fetch(`/questions/${this.questionId}/answers`);
         },
         methods:{
+            remove(index){
+                this.answers.slice(index,1);
+                this.count--;
+            },
           fetch(endpoint){
               axios.get(endpoint)
                   .then(({data})=>{
