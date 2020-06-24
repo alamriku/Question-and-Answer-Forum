@@ -32,8 +32,8 @@ Auth::routes();
 
 //answer Route start
 //Route::post('questions/{question}/answers','AnswerConrtoller@store')->name('answers.store');
-//this below is nested resoure route
-Route::resource('questions.answers','AnswerController')->except(['index','create','show']);
+//Answer Resource ,this  is nested resoure route
+Route::resource('questions.answers','AnswerController')->except(['create','show']);
 //the artisan command php artisan make:controller AnswerController -r -m Answer
 //answer route end
 

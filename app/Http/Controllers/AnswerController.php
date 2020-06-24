@@ -11,14 +11,11 @@ class AnswerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['index','show']]);
+        $this->middleware('auth',['except'=>['index']]);
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function index(Question $question){
+        return $question->answers()->with('user')->simplePaginate(3);
+    }
     public function store(Question $question,Request $request)
     {
 //        $request->validate([
