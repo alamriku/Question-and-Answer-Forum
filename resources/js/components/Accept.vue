@@ -23,6 +23,8 @@
 </template>
 
 <script>
+    import EventBus from '../event-bus.js';
+
     export default {
         props:['answer'],
         data(){
@@ -40,6 +42,7 @@
                             position:'topRight'
                         });
                         this.isBest=true;
+                        EventBus.$emit('accepted',this.id);
                     }).catch(err=>{
                         console.log(err);});
 
@@ -61,6 +64,12 @@
                     this.isBest ? 'vote-accepted': ''
                 ];
             }
+        },
+        created() {
+
+            EventBus.$on('accepted',(id)=>{
+                this.isBest = id === this.id;
+            })
         }
 
     }

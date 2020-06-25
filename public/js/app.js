@@ -1908,6 +1908,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -1932,6 +1933,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['answer'],
   data: function data() {
@@ -1951,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.isBest = true;
+        _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('accepted', _this.id);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -1967,6 +1970,13 @@ __webpack_require__.r(__webpack_exports__);
     classes: function classes() {
       return ['mt-2', this.isBest ? 'vote-accepted' : ''];
     }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["default"].$on('accepted', function (id) {
+      _this2.isBest = id === _this2.id;
+    });
   }
 });
 
@@ -51736,6 +51746,23 @@ __webpack_require__.r(__webpack_exports__);
     return user.id === answer.question.user_id;
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/event-bus.js":
+/*!***********************************!*\
+  !*** ./resources/js/event-bus.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
+var eventBus = new Vue();
+/* harmony default export */ __webpack_exports__["default"] = (eventBus);
 
 /***/ }),
 
