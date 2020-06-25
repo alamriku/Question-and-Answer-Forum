@@ -2166,7 +2166,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   methods: {
     remove: function remove(index) {
-      this.answers.slice(index, 1);
+      console.log(this.answers.length);
+      this.answers.splice(index, 1);
       this.count--;
     },
     fetch: function fetch(endpoint) {

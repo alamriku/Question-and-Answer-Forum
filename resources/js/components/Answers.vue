@@ -34,8 +34,9 @@
         },
         methods:{
             remove(index){
-                this.answers.slice(index,1);
-                this.count--;
+                console.log(this.answers.length);
+                 this.answers.splice(index,1);
+                 this.count--;
             },
           fetch(endpoint){
               axios.get(endpoint)
