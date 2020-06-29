@@ -1,24 +1,29 @@
 <template>
-    <div v-if="count" class="row mt-4" v-cloak>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        <h2>{{title}}</h2>
-                    </div>
-                    <hr>
+    <div>
+        <div v-if="count" class="row mt-4" v-cloak>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>{{title}}</h2>
+                        </div>
+                        <hr>
 
-                    <answer v-for="(answer,index) in answers" @deleted="remove(index)" :answer="answer" :key="answer.id"></answer>
-                    <div class="text-center mt-3" v-if="nextUrl">
-                        <button @click.prevent="fetch(nextUrl)" class="btn btn-outline-secondary">Load more answers</button>
+                        <answer v-for="(answer,index) in answers" @deleted="remove(index)" :answer="answer" :key="answer.id"></answer>
+                        <div class="text-center mt-3" v-if="nextUrl">
+                            <button @click.prevent="fetch(nextUrl)" class="btn btn-outline-secondary">Load more answers</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <new-answer :question-id="questionId" @created="add"></new-answer>
     </div>
+
 </template>
 <script>
     import Answer from './Answer.vue'
+    import NewAnswer from "./NewAnswer";
     export default {
         props:['question'],
         data(){
@@ -33,6 +38,10 @@
                 this.fetch(`/questions/${this.questionId}/answers`);
         },
         methods:{
+            add(answer){
+                this.answers.push(answer);
+                this.count++;
+            },
             remove(index){
                 console.log(this.answers.length);
                  this.answers.splice(index,1);
@@ -52,7 +61,8 @@
             }
         },
         components:{
-            Answer
+            Answer,
+            NewAnswer
         }
     }
 </script>

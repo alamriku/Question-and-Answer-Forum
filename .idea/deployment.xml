@@ -2,6 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" serverName="Visa">
     <serverData>
+      <paths name="Pharmacy">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../Keeno_project" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Visa">
         <serverdata>
           <mappings>
