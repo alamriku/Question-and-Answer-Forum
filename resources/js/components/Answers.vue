@@ -24,6 +24,7 @@
 <script>
     import Answer from './Answer.vue'
     import NewAnswer from "./NewAnswer";
+
     export default {
         props:['question'],
         data(){
@@ -34,6 +35,7 @@
               nextUrl:null
           }
         },
+
         created(){
                 this.fetch(`/questions/${this.questionId}/answers`);
         },
@@ -63,6 +65,7 @@
         components:{
             Answer,
             NewAnswer
+
         }
     }
 </script>
