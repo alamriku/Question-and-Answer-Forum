@@ -42,13 +42,19 @@
 </template>
 
 <script>
+    import {modification} from "../mixins/modification.js";
     import UserInfo from "../components/UserInfo";
     import Vote from "../components/Vote";
+
     export default {
+
         props:['answer'],
+
+        mixins:[modification],
+
         data(){
             return {
-                editing:false,
+
                 body:this.answer.body,
                 bodyHtml:this.answer.body_html,
                 id:this.answer.id,
@@ -57,65 +63,34 @@
 
             }
         },
+
         methods:{
             test(){
                 console.log(this.$authorize('modify',this.answer));
             },
-            edit(){
-                this.beforeEditCache=this.body;
-                this.editing=true;
+            setEditCache(){
+                this.beforeEditCache={
+                    body:this.body,
+                    title:this.title
+                };
+
             },
-            cancel(){
-              this.body = this.beforeEditCache;
-              this.editing=false;
+            restoreFromCache(){
+              this.body = this.beforeEditCache.body;
+              this.title = this.beforeEditCache.title;
+
             },
-            update(){
-                axios.patch(this.endpoint,{
+           payload(){
+                return {
                     body:this.body
-                }).then(res=>{
-                        console.log(res);
-                        this.editing = false;
-                        this.bodyHtml = res.data.body_html;
-                        this.$toast.success(res.data.message,'Success',{ timeout:3000 });
-
-                    })
-                    .catch(error=>{
-                        console.log('something went wrong');
-                        console.log(error.response);
-                        this.$toast.success(error.data.message,'Error',{ timeout:3000 });
+                }
+           },
+            delete(){
+                axios.delete(this.endpoint)
+                    .then(res=>{
+                        this.$toast.success(res.data.message,'Success',{timeout:3000});
+                        this.$emit('deleted')
                     });
-            },
-            destroy(){
-                this.$toast.question('Are you sure about that?','Warning',{
-                    timeout: 20000,
-                    close: false,
-                    overlay: true,
-                    displayMode: 'once',
-                    id: 'question',
-                    zindex: 999,
-                    title: 'Hey',
-
-                    position: 'center',
-                    buttons: [
-                        ['<button><b>YES</b></button>',  (instance, toast) => {
-
-                            axios.delete(this.endpoint)
-                                .then(res=>{
-                                    this.$emit('deleted')
-                                });
-                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-
-                        }, true],
-                        ['<button>NO</button>', function (instance, toast) {
-
-                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-
-                        }],
-                    ],
-
-                });
-
-
             }
         },
         computed:{
@@ -129,6 +104,8 @@
         },
         components:{
             UserInfo,Vote
-        }
+        },
+
+
     }
 </script>
