@@ -82,6 +82,9 @@
         components:{
             favorite,
             accept
+        },
+        created() {
+            this.count= (this.model.votes_count) ? this.model.votes_count : 0;
         }
     }
 </script>

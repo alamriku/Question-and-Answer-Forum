@@ -43,8 +43,8 @@
 
 <script>
     import {modification} from "../mixins/modification.js";
-    import UserInfo from "../components/UserInfo";
-    import Vote from "../components/Vote";
+    import UserInfo from "../components/UserInfo.vue";
+    import Vote from "../components/Vote.vue";
 
     export default {
 
@@ -105,7 +105,9 @@
         components:{
             UserInfo,Vote
         },
-
+        created() {
+            console.log(this.answer);
+        }
 
 
     }
