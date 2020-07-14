@@ -24,7 +24,7 @@ export const modification= {
             axios.put(this.endpoint,this.payload()).then(({data})=>{
                 this.bodyHtml=data.body_html;
                 this.editing=false;
-
+                console.log(window.location.pathname);
 
                 this.$toast.success(data.message,"Success",{timeout:3000});
 

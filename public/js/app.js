@@ -2321,6 +2321,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$toast.error(error.response.data.message, 'Error');
       }).then(function (_ref) {
         var data = _ref.data;
+        console.log(data);
 
         _this.$toast.success(data.message, 'Success');
 
@@ -2517,7 +2518,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.label + " " + this.model.created_date;
     },
     user: function user() {
-      console.log(this.model.user);
+      console.log(this.model);
       return this.model.user;
     }
   }
@@ -52531,6 +52532,7 @@ var modification = {
         var data = _ref.data;
         _this.bodyHtml = data.body_html;
         _this.editing = false;
+        console.log(window.location.pathname);
 
         _this.$toast.success(data.message, "Success", {
           timeout: 3000

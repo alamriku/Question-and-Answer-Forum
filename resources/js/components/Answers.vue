@@ -37,10 +37,11 @@
         },
 
         created(){
-                this.fetch(`/questions/${this.questionId}/answers`);
+            this.fetch(`/questions/${this.questionId}/answers`);
         },
         methods:{
             add(answer){
+
                 this.answers.push(answer);
                 this.count++;
             },

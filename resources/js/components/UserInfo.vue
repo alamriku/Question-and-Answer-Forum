@@ -23,7 +23,7 @@
                 return this.label + " "+ this.model.created_date;
             },
             user(){
-                console.log(this.model.user);
+                console.log(this.model);
                 return this.model.user
             }
         }
