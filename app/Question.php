@@ -77,15 +77,13 @@ class Question extends Model
         return \Parsedown::instance()->text($this->body);
     }
 
-    public function getExcerptAttribute(){
-        return $this->excerpt(2);
-
-    }
+//    public function getExcerptAttribute(){
+//        return $this->excerpt(2);
+//
+//    }
 
     public function excerpt($length){
         return  \Illuminate\Support\Str::limit(strip_tags($this->bodyHtml()),$length);
     }
-//    public function setBodyAttribute($value){
-//        $this->attributes['body']=clean($value);
-//    }
+
 }

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="10e54146-7843-4d7d-b663-afa82b076f68" name="Visa" url="http://flightsbook.net">
-        <fileTransfer host="flightsbook.net" port="21">
+      <webServer id="10e54146-7843-4d7d-b663-afa82b076f68" name="news_ifwl" url="http://ifwl-bd.com">
+        <fileTransfer host="ifwl-bd.com" port="21">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" showHiddenFiles="true" />
           </advancedOptions>
           <option name="port" value="21" />
         </fileTransfer>
