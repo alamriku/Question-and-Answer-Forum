@@ -61,6 +61,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Question::class,'favorites')->withTimestamps();//'user_id','question_id');
     }
 
+//A polymorphic relationship allows the target model to belong to more than one type of model using a single association.
     public function voteQuestions(){
         return $this->morphedByMany(Question::class,'votable')->withTimestamps();//votable get converted by laravel behide the seen votables
     }
@@ -86,13 +87,13 @@ class User extends Authenticatable
         else{
             $relationship->attach($model,['vote'=>$vote]);
         }
-
+// above query is between votable and (question or answer ) then we do $model->load('votes'); lazy eager loading to get the user and votable relationship see the votable Trait
         $model->load('votes');
         $downVotes=  (int)$model->downVotes()->sum('vote');
         $upVotes=  (int)$model->upVotes()->sum('vote');
         $model->votes_count = $upVotes + $downVotes;
         $model->save();
-        
+
         return $model->votes_count;
     }
 
